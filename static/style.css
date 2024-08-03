@@ -68,3 +68,30 @@ th, td {
       border: 3px solid thistle;
       text-align: center;
     }
+
+.access_form{
+	width:100%;
+	color: rebeccapurple;
+}
+
+.access_form input[type="password"]{
+	width: 70%; 
+	padding: 30px; 
+	margin-bottom: 15px;
+	border: 2px solid plum;
+	border-radius: 75px; 
+	font-size: 40px; 
+	text-align: center;
+	outline: none;
+	}
+
+.access_form button[type="submit"]{
+	background-color: thistle; 
+	padding: 20px; 
+	border: none; 
+	border-radius: 50px; 
+	font-size: 30px;
+	text-align: center; 
+	font-family: Courier New;
+	color: rebeccapurple;
+}
