@@ -1,15 +1,16 @@
 body{
 	font-family: Courier New;
 	background-color: lavenderblush;
-	color: white;
 	text-align: center;
 	font-size: 50px;
+	color: rebeccapurple;
 }
 
 h1{
 	border: none;
 	border-radius: 50px;
 	background-color: plum;
+	color: white;
 }
 
 .announce{
@@ -19,13 +20,6 @@ h1{
 	
 }
 
-.sche_updates {
-	border: none;
-	border-radius: 50px;
-	background-color: thistle;
-	margin: 0 80px;
-
-}
 
 .imp_remind{
 	border: none;
@@ -78,7 +72,7 @@ th, td {
 	width: 70%; 
 	padding: 30px; 
 	margin-bottom: 15px;
-	border: 2px solid plum;
+	border: 2px solid thistle;
 	border-radius: 75px; 
 	font-size: 40px; 
 	text-align: center;

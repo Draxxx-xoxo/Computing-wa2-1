@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Activity Hub</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">	
+</head>
+<body>
+  <a href="{{ url_for('home') }}" style="text-decoration: none;">Home</a>
+  <a href="{{ url_for('announce') }}" style="text-decoration: none;">Announcements</a>
+  <a href="{{ url_for('attendance') }}" style="text-decoration: none;">Attendance</a>
+  <a href="{{ url_for('schedule') }}" style="text-decoration: none;">Schedule</a>
+  <a href="{{ url_for('admin') }}" style="text-decoration: none;">Admin</a>
+
+  <h1>Admin Control Page</h1>
+  <h2>Add annoucement</h2>
+  <form method="POST">
+    <input type="hidden" name="announcement" value="announcement">
+    <label for="homework">New Homework:</label>
+    <input type="text" name="homework" id="homework"><br><br>
+    <label for="event">New Event:</label>
+    <input type="text" name="event" id="event"><br><br>
+    <label for="reminder">New Reminder:</label>
+    <input type="text" name="reminder" id="reminder"><br><br>
+  </form>
+  <h2>Add attendance</h2>
+  <form method="POST">
+    <input type="hidden" name="attendance" value="attendance">
+    <label for="ab_day">Day:</label>
+    <input type="text" name="ab_day" id="ab_day"><br><br>
+    <label for="month">Month:</label>
+    <input type="text" name="month" id="month"><br><br>
+    
+    <label>Select absent without valid reason students:</label><br>
+    <input type="checkbox" id="stu1" name="absent_student" value="stu1">
+    <label for="stu1">Student 1</label><br>
+    <input type="checkbox" id="stu2" name="absent_student" value="stu2">
+    <label for="stu2">Student 2</label><br>
+    <input type="checkbox" id="stu3" name="absent_student" value="stu3">
+    <label for="stu3">Student 3</label><br>
+
+    <label>Select absent WITH valid reason students:</label><br>
+    <input type="checkbox" id="stu1" name="vr_student" value="stu1">
+    <label for="stu1">Student 1</label><br>
+    <input type="checkbox" id="stu2" name="vr_student" value="stu2">
+    <label for="stu2">Student 2</label><br>
+    <input type="checkbox" id="stu3" name="vr_student" value="stu3">
+    <label for="stu3">Student 3</label><br>
+  </form>
+  <h2>Add Schedule</h2>
+  <form method="POST">
+    <input type="hidden" name="schedule" value="schedule">
+    <label for="term">Term:</label>
+    <input type="text" name="term" id="term"><br><br>
+    <label for="week">Week:</label>
+    <input type="text" name="week" id="week"><br><br>
+    <label for="date">Date:</label>
+    <input type="text" name="date" id="date"><br><br>
+    <label for="day">Day:</label>
+    <input type="text" name="day" id="day"><br><br>
+    <label for="session">Session:</label>
+    <input type="text" name="session" id="session"><br><br>
+    <label for="start">Start:</label>
+    <input type="text" name="start" id="start"><br><br>
+    <label for="end">End:</label>
+    <input type="text" name="end" id="end"><br><br>
+    <label for="remark">Remark:</label>
+    <input type="text" name="remark" id="remark"><br><br>
+
+  </form>
+  
+  <a href="{{ url_for('logout') }}">Log out</a>
+</body>
+</html>
