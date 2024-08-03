@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Activity Hub</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">	
+</head>
+<body>
+	<a href="{{ url_for('home') }}" style="text-decoration: none;">Home</a>
+	<a href="{{ url_for('announce') }}" style="text-decoration: none;">Announcements</a>
+	<a href="{{ url_for('attendance') }}" style="text-decoration: none;">Attendance</a>
+	<a href="{{ url_for('schedule') }}" style="text-decoration: none;">Schedule</a>
+	
+	<h1>Announcements</h1>
+<hr><hr>
+<div class="announce">
+	<div class="homework">
+		<h2>Homework</h2>
+		<ul>
+			<li>Homework 1</li>
+			<li>Homework 2</li>
+			<li>Homework 3</li>		
+		</ul>
+	</div>
+	<hr><hr>
+
+	<div class="upcoming_events">
+		<h2>Upcoming Events</h2>
+		<ul>
+			<li>Event 1</li>
+			<li>Event 2</li>
+			<li>Event 3</li>		
+		</ul>
+	</div>
+	<hr><hr>
+	<div class="imp_remind">
+		<h2>Important Reminders</h2>
+		<ul>
+			<li>Reminder 1</li>
+			<li>Reminder 2</li>
+			<li>Reminder 3</li>		
+		</ul>
+	</div>
+	<hr><hr>
+	<div class="sche_updates">
+		<h2>Schedule Updates</h2>
+		<ul>
+			<li>Update 1</li>
+			<li>Update 2</li>
+			<li>Update 3</li>		
+		</ul>
+		
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+body{
+	font-family: Courier New;
+	background-color: lavenderblush;
+	color: white;
+	text-align: center;
+	font-size: 50px;
+}
+
+h1{
+	border: none;
+	border-radius: 50px;
+	background-color: plum;
+}
+
+.announce{
+	color: rebeccapurple;
+	font-size: 30px;
+	list-style-position: inside;
+	
+}
+
+.sche_updates {
+	border: none;
+	border-radius: 50px;
+	background-color: thistle;
+	margin: 0 80px;
+
+}
+
+.imp_remind{
+	border: none;
+	border-radius: 50px;
+	background-color: thistle;
+	margin: 0 80px;
+
+	
+}
+.upcoming_events {
+	border: none;
+	border-radius: 50px;
+	background-color: thistle;
+	margin: 0 80px;
+
+}
+
+
+.homework {
+	border: none;
+	border-radius: 50px;
+	background-color: thistle;
+	margin: 0 80px;
+
+}
+
+hr {
+	border: none;
+    height: 4px; 
+	background-color: thistle;
+	width: 100%;
+}
+
+table {
+      width: 100%;
+      border-collapse: collapse;
+	  color: rebeccapurple;
+    }
+th, td {
+      border: 3px solid thistle;
+      text-align: center;
+    }

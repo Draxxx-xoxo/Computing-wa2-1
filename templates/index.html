@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Activity Hub</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">	
+</head>
+<body>
+	<a href="{{ url_for('home') }}" style="text-decoration: none;">Home</a>
+	<a href="{{ url_for('announce') }}" style="text-decoration: none;">Announcements</a>
+	<a href="{{ url_for('attendance') }}" style="text-decoration: none;">Attendance</a>
+	<a href="{{ url_for('schedule') }}" style="text-decoration: none;">Schedule</a>
+	
+	<h1>Welcome to Activity Hub!</h1>
+</body>
+</html>
