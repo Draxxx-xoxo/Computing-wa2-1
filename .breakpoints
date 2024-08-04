@@ -1,3 +1,12 @@
 {
-  "files": {}
+  "files": {
+    "templates/announce.html": [
+      {
+        "id": "925b774d-06cc-4164-b869-48967dc85515",
+        "line": 6,
+        "version": 180,
+        "index": 162
+      }
+    ]
+  }
 }

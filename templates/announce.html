@@ -18,9 +18,9 @@
 	<div class="homework">
 		<h2>Homework</h2>
 		<ul>
-			<li>Homework 1</li>
-			<li>Homework 2</li>
-			<li>Homework 3</li>		
+			{% for homework in homeworks %}
+			<li>{{ homework }}</li>
+			{% endfor %}
 		</ul>
 	</div>
 	<hr><hr>
@@ -28,18 +28,18 @@
 	<div class="upcoming_events">
 		<h2>Upcoming Events</h2>
 		<ul>
-			<li>Event 1</li>
-			<li>Event 2</li>
-			<li>Event 3</li>		
+			{% for event in events %}
+			<li>{{ event }}</li>
+			{% endfor %}
 		</ul>
 	</div>
 	<hr><hr>
 	<div class="imp_remind">
 		<h2>Important Reminders</h2>
 		<ul>
-			<li>Reminder 1</li>
-			<li>Reminder 2</li>
-			<li>Reminder 3</li>		
+			{% for reminder in reminders %}
+			<li>{{ reminder }}</li>
+			{% endfor %}
 		</ul>
 	</div>
 	<hr><hr>

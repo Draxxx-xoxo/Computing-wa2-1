@@ -15,37 +15,44 @@
   <h1>Admin Control Page</h1>
   <h2>Add annoucement</h2>
   <form method="POST">
-    <input type="hidden" name="announcement" value="announcement">
+    <input type="hidden" name="type" value="announcement">
     <label for="homework">New Homework:</label>
     <input type="text" name="homework" id="homework"><br><br>
     <label for="event">New Event:</label>
     <input type="text" name="event" id="event"><br><br>
     <label for="reminder">New Reminder:</label>
     <input type="text" name="reminder" id="reminder"><br><br>
+    <button type="submit">ADD</button>
   </form>
   <h2>Add attendance</h2>
+  <h3>Add student</h3>
   <form method="POST">
-    <input type="hidden" name="attendance" value="attendance">
+    <input type="hidden" name="type" value="student">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" required><br><br>
+    <label for="class">Class:</label>
+    <input type="text" name="class" id="class" required><br><br>
+    <button type="submit">ADD</button>
+  </form>
+  <form method="POST">
+    <input type="hidden" name="type" value="attendance">
     <label for="ab_day">Day:</label>
-    <input type="text" name="ab_day" id="ab_day"><br><br>
+    <input type="text" name="ab_day" id="ab_day" required><br><br>
     <label for="month">Month:</label>
-    <input type="text" name="month" id="month"><br><br>
-    
-    <label>Select absent without valid reason students:</label><br>
-    <input type="checkbox" id="stu1" name="absent_student" value="stu1">
-    <label for="stu1">Student 1</label><br>
-    <input type="checkbox" id="stu2" name="absent_student" value="stu2">
-    <label for="stu2">Student 2</label><br>
-    <input type="checkbox" id="stu3" name="absent_student" value="stu3">
-    <label for="stu3">Student 3</label><br>
+    <input type="text" name="month" id="month" required><br><br>
+
+    <label>Select absent WITHOUT valid reason students:</label><br>
+    {% for student in student_name %}
+        <input type="checkbox" id="stu_{{ loop.index }}" name="absent_student" value="{{ student }}">
+        <label for="stu_{{ loop.index }}">{{ student }}</label><br>
+    {% endfor %}
 
     <label>Select absent WITH valid reason students:</label><br>
-    <input type="checkbox" id="stu1" name="vr_student" value="stu1">
-    <label for="stu1">Student 1</label><br>
-    <input type="checkbox" id="stu2" name="vr_student" value="stu2">
-    <label for="stu2">Student 2</label><br>
-    <input type="checkbox" id="stu3" name="vr_student" value="stu3">
-    <label for="stu3">Student 3</label><br>
+    {% for student in student_name %}
+        <input type="checkbox" id="stu_vr_{{ loop.index }}" name="vr_student" value="{{ student }}">
+        <label for="stu_vr_{{ loop.index }}">{{ student }}</label><br>
+    {% endfor %}
+    <button type="submit">ADD</button>
   </form>
   <h2>Add Schedule</h2>
   <form method="POST">
