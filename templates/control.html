@@ -43,14 +43,14 @@
 
     <label>Select absent WITHOUT valid reason students:</label><br>
     {% for student in student_name %}
-        <input type="checkbox" id="stu_{{ loop.index }}" name="absent_student" value="{{ student }}">
-        <label for="stu_{{ loop.index }}">{{ student }}</label><br>
+        <input type="checkbox" id="stu_{{ loop.index }}" name="absent_student" value="{{ student[0] }}">
+        <label for="stu_{{ loop.index }}">{{ student[0] }}({{ student[1] }})</label><br>
     {% endfor %}
 
     <label>Select absent WITH valid reason students:</label><br>
     {% for student in student_name %}
-        <input type="checkbox" id="stu_vr_{{ loop.index }}" name="vr_student" value="{{ student }}">
-        <label for="stu_vr_{{ loop.index }}">{{ student }}</label><br>
+        <input type="checkbox" id="stu_vr_{{ loop.index }}" name="vr_student" value="{{ student[0] }}">
+        <label for="stu_vr_{{ loop.index }}">{{ student[0] }}({{ student[1] }})</label><br>
     {% endfor %}
     <button type="submit">ADD</button>
   </form>

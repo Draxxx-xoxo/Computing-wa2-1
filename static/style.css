@@ -2,7 +2,7 @@ body{
 	font-family: Courier New;
 	background-color: lavenderblush;
 	text-align: center;
-	font-size: 50px;
+	font-size: 40px;
 	color: rebeccapurple;
 }
 
@@ -88,4 +88,8 @@ th, td {
 	text-align: center; 
 	font-family: Courier New;
 	color: rebeccapurple;
+}
+
+a{
+	font-size: 40px;
 }

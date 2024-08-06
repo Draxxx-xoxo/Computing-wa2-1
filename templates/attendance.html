@@ -15,16 +15,21 @@
 	<h1>Attendance</h1>
 	<table>
 		<tr>
+			<th>Student</th>
 			<th>Name</th>
 			<th>Class</th>
 			{% for date in dates %}
 			<th>{{ date }}</th>
 			{% endfor %}
 		</tr>
-		{% for attendances in content %}
+		{% for attendances in data %}
 		<tr>
 			{% for attendance in attendances %}
+			{% if attendance is none %}
+			<td></td>
+			{% else %}
 			<td>{{ attendance }}</td>
+			{% endif %}
 			{% endfor %}			
 		</tr>	
 		{% endfor %}
