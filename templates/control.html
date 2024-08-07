@@ -56,24 +56,24 @@
   </form>
   <h2>Add Schedule</h2>
   <form method="POST">
-    <input type="hidden" name="schedule" value="schedule">
+    <input type="hidden" name="type" value="schedule">
     <label for="term">Term:</label>
-    <input type="text" name="term" id="term"><br><br>
+    <input type="text" name="term" id="term" required><br><br>
     <label for="week">Week:</label>
-    <input type="text" name="week" id="week"><br><br>
+    <input type="text" name="week" id="week" required><br><br>
     <label for="date">Date:</label>
-    <input type="text" name="date" id="date"><br><br>
+    <input type="text" name="date" id="date" required><br><br>
     <label for="day">Day:</label>
-    <input type="text" name="day" id="day"><br><br>
+    <input type="text" name="day" id="day" required><br><br>
     <label for="session">Session:</label>
-    <input type="text" name="session" id="session"><br><br>
+    <input type="text" name="session" id="session" required><br><br>
     <label for="start">Start:</label>
-    <input type="text" name="start" id="start"><br><br>
+    <input type="text" name="start" id="start" required><br><br>
     <label for="end">End:</label>
-    <input type="text" name="end" id="end"><br><br>
+    <input type="text" name="end" id="end" required><br><br>
     <label for="remark">Remark:</label>
-    <input type="text" name="remark" id="remark"><br><br>
-
+    <input type="text" name="remark" id="remark" required><br><br>
+    <button type="submit">ADD</button>
   </form>
   
   <a href="{{ url_for('logout') }}">Log out</a>

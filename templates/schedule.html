@@ -15,6 +15,7 @@
 	<h1>Schedule</h1>
 	<table>
 		<tr>
+			<th>Schedule</th>
 			<th>Term</th>
 			<th>Week</th>
 			<th>Date</th>
@@ -24,16 +25,13 @@
 			<th>End</th>
 			<th>Remarks</th>
 		</tr>
+		{% for schedule in data %}
 		<tr>
-			<td>3</td>
-			<td>1</td>
-			<td>24/6</td>
-			<td>Mon</td>
-			<td>No CCA</td>
-			<td>4:00 PM</td>
-			<td>7:00 PM</td>
-			<td>ASR plays</td>
-		</tr>				
+			{% for input in schedule %}
+			<td>{{ input }}</td>
+			{% endfor %}
+		</tr>	
+		{% endfor %}
 	</table>
 </body>
 </html>

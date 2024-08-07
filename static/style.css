@@ -92,4 +92,22 @@ th, td {
 
 a{
 	font-size: 40px;
+	color: rebeccapurple;
+}
+
+
+.for_students {
+	border: none;
+	border-radius: 50px;
+	background-color: thistle;
+	margin: 0 80px;
+
+}
+
+.for_teachers {
+	border: none;
+	border-radius: 50px;
+	background-color: thistle;
+	margin: 0 80px;
+
 }
