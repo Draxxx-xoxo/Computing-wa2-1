@@ -13,7 +13,8 @@
   <a href="{{ url_for('admin') }}" style="text-decoration: none;">Admin</a>
 
   <h1>Admin Control Page</h1>
-  <h2>Add annoucement</h2>
+  <h2>Annoucement</h2>
+  <h3>Add Announcement</h3>
   <form method="POST">
     <input type="hidden" name="type" value="announcement">
     <label for="homework">New Homework:</label>
@@ -23,6 +24,15 @@
     <label for="reminder">New Reminder:</label>
     <input type="text" name="reminder" id="reminder"><br><br>
     <button type="submit">ADD</button>
+  </form>
+  <h3>Delete Announcement</h3>
+  {% for announcement in announcements %}
+  <form method="POST">
+      <input type="hidden" name="type" value="delete_announcement">
+      <input type="checkbox" id="{{ loop.index }}" name="delete_announcement" value="{{ announcement[0] }}">
+      <label for="stu_{{ loop.index }}">{{ announcement[1] }}</label><br>
+  {% endfor %}
+  <button type="submit">DELETE</button>
   </form>
   <h2>Add attendance</h2>
   <h3>Add student</h3>

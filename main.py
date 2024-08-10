@@ -28,6 +28,14 @@ def addcolumn(command):
     conn.commit()
     conn.close()
 
+def delete_rows_by_ids(table_name, column_name, ids):
+    con = sqlite3.connect('activity_hub.db')
+    cur = con.cursor()
+    for id in ids:
+        delete_query = f"DELETE FROM {table_name} WHERE {column_name} = ?;"
+        cur.execute(delete_query, (id,))
+    con.commit()
+    con.close()
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -112,6 +120,11 @@ def admin_dashboard():
                 editdb("INSERT INTO announcements (type, announcement) VALUES (?, ?)", ("reminder", reminder))
 
             return redirect('/admin/control?token=' + token)
+        elif type == "delete_announcement":
+            ids = [int(id) for id in request.form.getlist('delete_announcement')]
+            delete_rows_by_ids("announcements", "announcement_id", ids)
+            
+            return redirect('/admin/control?token=' + token)
         elif type == "student":
             name = request.form.get('name', '').strip()
             stu_class = request.form.get('class', '').strip()
@@ -143,8 +156,9 @@ def admin_dashboard():
             editdb("INSERT INTO schedule (term, week, date, day, session, start, end, remark) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (term, week, date, day, session, start, end, remark))
             return redirect('/admin/control?token=' + token)
     student_name = opendb("SELECT name, class FROM attendance", None)
+    announcements = opendb("SELECT announcement_id, announcement FROM announcements", None)
    
-    return render_template("control.html", student_name=student_name)
+    return render_template("control.html", student_name=student_name, announcements=announcements)
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0', port=5000)
