@@ -91,23 +91,19 @@ th, td {
 }
 
 a{
-	font-size: 40px;
+	font-size: 36px;
 	color: rebeccapurple;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
 
-.for_students {
-	border: none;
+.how_to {
+	font-size: 30px;
+	border: 14px dotted white;
 	border-radius: 50px;
 	background-color: thistle;
-	margin: 0 80px;
-
+	margin: 0 200px;
+	list-style-position: inside;
 }
 
-.for_teachers {
-	border: none;
-	border-radius: 50px;
-	background-color: thistle;
-	margin: 0 80px;
-
-}

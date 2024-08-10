@@ -17,9 +17,8 @@ def opendb(query, params=None):
 def editdb(query, values):
     con = sqlite3.connect('activity_hub.db')
     cur = con.cursor()
-    res = cur.execute(query, values)
+    cur.execute(query, values)
     con.commit()
-    print(res.fetchall())
     con.close()
 
 def addcolumn(command):
@@ -61,7 +60,6 @@ def attendance():
 @app.route("/schedule")
 def schedule():
     data = opendb("SELECT * FROM schedule", None)
-    print(data)
     return render_template("schedule.html", data=data)
 
 tokens = {}
@@ -99,8 +97,6 @@ def admin_dashboard():
 
     if request.method == "POST":
         type = request.form.get('type')
-        print(type)
-
         if type == "announcement":
             homework = request.form.get('homework', '').strip()
             event = request.form.get('event', '').strip()
@@ -144,7 +140,6 @@ def admin_dashboard():
             start = request.form.get('start', '').strip()
             end = request.form.get('end', '').strip()
             remark = request.form.get('remark', '').strip()
-            print(term)
             editdb("INSERT INTO schedule (term, week, date, day, session, start, end, remark) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (term, week, date, day, session, start, end, remark))
             return redirect('/admin/control?token=' + token)
     student_name = opendb("SELECT name, class FROM attendance", None)
