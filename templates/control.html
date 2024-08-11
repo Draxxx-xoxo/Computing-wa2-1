@@ -85,6 +85,13 @@
     <input type="text" name="remark" id="remark" required><br><br>
     <button type="submit">ADD</button>
   </form>
+  <h2>Change password</h2>
+  <form method="POST">
+    <input type="hidden" name="type" value="password">
+    <label for="new_pw">New Password:</label>
+    <input type="text" name="new_pw" id="new_pw" required><br><br>
+    <button type="submit">CHANGE</button>
+  </form>
   
   <a href="{{ url_for('logout') }}">Log out</a>
 </body>

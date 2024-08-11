@@ -1,8 +1,24 @@
 from flask import Flask, render_template, url_for, request, redirect
 import uuid
 import sqlite3
+import bcrypt
+import json
 app = Flask(__name__)
 
+
+def hash_password(password):
+    return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+    
+def get_password():
+    with open("password.json", 'r') as file:
+        data = json.load(file)
+    return data['password'].encode('utf-8')
+
+def set_password(new_password):
+    hashed_password = hash_password(new_password)
+    with open("password.json", 'w') as file:
+        json.dump({'password': hashed_password.decode('utf-8')}, file)
+    
 def opendb(query, params=None):
     con = sqlite3.connect('activity_hub.db')
     cur = con.cursor()
@@ -76,7 +92,8 @@ tokens = {}
 def admin():
     if request.method == "POST":
         password = request.form.get("password")
-        if password == "Admin12345":
+        stored_password_hash = get_password()
+        if stored_password_hash and bcrypt.checkpw(password.encode('utf-8'), stored_password_hash):
             token = str(uuid.uuid4())
             tokens[token] = True
             return redirect(f'/admin/control?token={token}')
@@ -155,6 +172,10 @@ def admin_dashboard():
             remark = request.form.get('remark', '').strip()
             editdb("INSERT INTO schedule (term, week, date, day, session, start, end, remark) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (term, week, date, day, session, start, end, remark))
             return redirect('/admin/control?token=' + token)
+        elif type == "password":
+            new_pw = request.form.get('new_pw')
+            set_password(new_pw)            
+            return redirect('/admin')
     student_name = opendb("SELECT name, class FROM attendance", None)
     announcements = opendb("SELECT announcement_id, announcement FROM announcements", None)
    
