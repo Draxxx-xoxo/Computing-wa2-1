@@ -75,8 +75,7 @@ def attendance():
     dates = [description[0] for description in cur.description]
     formatted_dates = []
     for date in dates[3:]:
-        split_date = date.split("_")
-        formatted_dates.append(split_date[0] + "/" + split_date[1])
+        formatted_dates.append(date.replace('_', '-'))
     dates = formatted_dates       
     con.close()
     return render_template("attendance.html", data=data, dates=dates)
@@ -136,22 +135,26 @@ def admin_dashboard():
             if reminder:
                 editdb("INSERT INTO announcements (type, announcement) VALUES (?, ?)", ("reminder", reminder))
 
-            return redirect('/admin/control?token=' + token)
+            return redirect(url_for('admin_dashboard', token=token))
         elif type == "delete_announcement":
             ids = [int(id) for id in request.form.getlist('delete_announcement')]
             delete_rows_by_ids("announcements", "announcement_id", ids)
             
-            return redirect('/admin/control?token=' + token)
+            return redirect(url_for('admin_dashboard', token=token))
         elif type == "student":
             name = request.form.get('name', '').strip()
             stu_class = request.form.get('class', '').strip()
             editdb("INSERT INTO attendance (name, class) VALUES (?, ?)", (name, stu_class))
-            return redirect('/admin/control?token=' + token)
+            return redirect(url_for('admin_dashboard', token=token))
+        elif type == "delete_student":
+            ids = [int(id) for id in request.form.getlist('delete_student')]
+            delete_rows_by_ids("attendance", "stu_id", ids)
+            return redirect(url_for('admin_dashboard', token=token))
         elif type == "attendance":
-            ab_day = request.form.get('ab_day', '').strip()
-            month = request.form.get('month', '').strip()
-            date = ab_day + "_" + month
+            original_date = request.form.get('ab_date', '').strip()
+            date = original_date.replace('-', '_')
             date = f"'{date}'"
+            print(date)
             addcolumn((f"ALTER TABLE attendance ADD COLUMN {date} TEXT;"))
             absent_students = request.form.getlist('absent_student')
             vr_students = request.form.getlist('vr_student')
@@ -160,7 +163,7 @@ def admin_dashboard():
                 editdb(f"UPDATE attendance SET {date} = ? WHERE name = ?", ('0', student))
             for student in vr_students:
                 editdb(f"UPDATE attendance SET {date} = ? WHERE name = ?", ('VR', student))
-            return redirect('/admin/control?token=' + token)
+            return redirect(url_for('admin_dashboard', token=token))
         elif type == "schedule":
             term = request.form.get('term', '').strip()
             week = request.form.get('week', '').strip()
@@ -171,15 +174,19 @@ def admin_dashboard():
             end = request.form.get('end', '').strip()
             remark = request.form.get('remark', '').strip()
             editdb("INSERT INTO schedule (term, week, date, day, session, start, end, remark) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", (term, week, date, day, session, start, end, remark))
-            return redirect('/admin/control?token=' + token)
+            return redirect(url_for('admin_dashboard', token=token))
+        elif type == "delete_schedule":
+            ids = [int(id) for id in request.form.getlist('delete_schedule')]
+            delete_rows_by_ids("schedule", "schedule_id", ids)
+            return redirect(url_for('admin_dashboard', token=token))
         elif type == "password":
             new_pw = request.form.get('new_pw')
             set_password(new_pw)            
-            return redirect('/admin')
+            return redirect(url_for('admin'))
     student_name = opendb("SELECT name, class FROM attendance", None)
     announcements = opendb("SELECT announcement_id, announcement FROM announcements", None)
-   
-    return render_template("control.html", student_name=student_name, announcements=announcements)
+    schedules = opendb("SELECT * FROM schedule", None)
+    return render_template("control.html", student_name=student_name, announcements=announcements, schedules=schedules)
 
 if __name__ == '__main__':
-  app.run(host='0.0.0.0', port=5000)
+  app.run(host='0.0.0.0', port=5000, debug=True)

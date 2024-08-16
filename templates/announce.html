@@ -14,31 +14,43 @@
 	
 	<h1>Announcements</h1>
 <div class="announce">
-	<div class="homework">
+	<div class="homework"><br>
 		<h2>Homework</h2>
 		<ul>
+			{% if not homeworks %}
+			<li>No homework!</li>
+			{% else %}
 			{% for homework in homeworks[::-1] %}
 			<li>{{ homework[1] }}</li>
 			{% endfor %}
+			{% endif %}
 		</ul>
-	</div>
-	<hr><hr>
+	</div><hr>
 
-	<div class="upcoming_events">
+
+	<div class="upcoming_events"><br>
 		<h2>Upcoming Events</h2>
 		<ul>
+			{% if not events %}
+			<li>No upcoming events!</li>
+			{% else %}
 			{% for event in events[::-1] %}
 			<li>{{ event[1] }}</li>
 			{% endfor %}
+			{% endif %}
 		</ul>
-	</div>
-	<hr><hr>
-	<div class="imp_remind">
+	</div><hr>
+
+	<div class="imp_remind"><br>
 		<h2>Important Reminders</h2>
 		<ul>
+			{% if not reminders %}
+			<li>No important reminders!</li>
+			{% else %}
 			{% for reminder in reminders[::-1] %}
 			<li>{{ reminder[1] }}</li>
 			{% endfor %}
+			{% endif %}
 		</ul>
 	</div>
 

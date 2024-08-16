@@ -6,25 +6,53 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">	
 </head>
 <body>
+<div id="control"></div>
   <a href="{{ url_for('home') }}" style="text-decoration: none;">Home</a>
   <a href="{{ url_for('announce') }}" style="text-decoration: none;">Announcements</a>
   <a href="{{ url_for('attendance') }}" style="text-decoration: none;">Attendance</a>
   <a href="{{ url_for('schedule') }}" style="text-decoration: none;">Schedule</a>
   <a href="{{ url_for('admin') }}" style="text-decoration: none;">Admin</a>
-
+  
   <h1>Admin Control Page</h1>
-  <h2>Annoucement</h2>
-  <h3>Add Announcement</h3>
+  <div class="logout">
+  <a href="{{ url_for('logout') }}" style="text-decoration: none;">Log out</a>
+  </div>
+  <br><br>
+  <a href="#announcement" class="scroll-button">Edit Announcements</a>
+  <a href="#attendance" class="scroll-button">Edit Attendance</a>
+  <a href="#schedule" class="scroll-button">Edit Schedule</a>
+
+<div class="change_pw">
+  <h2>Change password</h2>
+  <div class="c_pw">
+  <form method="POST">
+    <input type="hidden" name="type" value="password">
+    <label for="new_pw">New Password</label><br>
+    <input type="text" name="new_pw" id="new_pw" required><br><br>
+    <button type="submit">Change</button>
+  </form>
+  </div>
+</div>
+  
+<div class="announcement" id="announcement"><br>
+  <a href="#control" class="scroll-button">Back to Control Page</a><br><br>
+  <h2>Announcement</h2>
+  
+  <div class="a_ann">
+  <h3>Add Announcement</h3>  
   <form method="POST">
     <input type="hidden" name="type" value="announcement">
-    <label for="homework">New Homework:</label>
+    <label for="homework">New Homework</label><br>
     <input type="text" name="homework" id="homework"><br><br>
-    <label for="event">New Event:</label>
+    <label for="event">New Event</label><br>
     <input type="text" name="event" id="event"><br><br>
-    <label for="reminder">New Reminder:</label>
+    <label for="reminder">New Reminder</label><br>
     <input type="text" name="reminder" id="reminder"><br><br>
-    <button type="submit">ADD</button>
+    <button type="submit">&nbsp;Add&nbsp;</button>
   </form>
+  </div>
+  
+  <div class="d_ann">
   <h3>Delete Announcement</h3>
   {% for announcement in announcements %}
   <form method="POST">
@@ -32,67 +60,104 @@
       <input type="checkbox" id="{{ loop.index }}" name="delete_announcement" value="{{ announcement[0] }}">
       <label for="stu_{{ loop.index }}">{{ announcement[1] }}</label><br>
   {% endfor %}
-  <button type="submit">DELETE</button>
-  </form>
-  <h2>Add attendance</h2>
+  <br>
+  <button type="submit">Delete</button>
+  </form><br>
+  </div>
+  
+</div>
+<div class="attendance" id="attendance"><br>
+  <a href="#control" class="scroll-button">Back to Control Page</a><br><br>
+  <h2>Attendance</h2>
+  
+  <div class="a_stu">
   <h3>Add student</h3>
   <form method="POST">
     <input type="hidden" name="type" value="student">
-    <label for="name">Name:</label>
+    <label for="name">Name</label><br>
     <input type="text" name="name" id="name" required><br><br>
-    <label for="class">Class:</label>
+    <label for="class">Class</label><br>
     <input type="text" name="class" id="class" required><br><br>
-    <button type="submit">ADD</button>
+    <button type="submit">&nbsp;Add&nbsp;</button>
   </form>
+  </div>
+  
+  <div class="d_stu">
+  <h3>Delete Student</h3>
+  {% for student in student_name %}
+  <form method="POST">
+      <input type="hidden" name="type" value="delete_student">
+      <input type="checkbox" id="{{ loop.index }}" name="delete_student" value="{{ loop.index }}">
+      <label for="stu_{{ loop.index }}">{{ student[0] }}({{ student[1] }})</label><br>
+  {% endfor %}
+  <br>
+  <button type="submit">Delete</button>
+  </form>
+  </div>
+  
+  <div class="a_att">
+  <h3>Add Attendance</h3>
   <form method="POST">
     <input type="hidden" name="type" value="attendance">
-    <label for="ab_day">Day:</label>
-    <input type="text" name="ab_day" id="ab_day" required><br><br>
-    <label for="month">Month:</label>
-    <input type="text" name="month" id="month" required><br><br>
-
-    <label>Select absent WITHOUT valid reason students:</label><br>
+    <label for="ab_date">Add Date</label><br>
+    <input type="date" name="ab_date" id="ab_date" required><br><br>
+    <label>Select absent WITHOUT valid reason students</label><br>
     {% for student in student_name %}
         <input type="checkbox" id="stu_{{ loop.index }}" name="absent_student" value="{{ student[0] }}">
         <label for="stu_{{ loop.index }}">{{ student[0] }}({{ student[1] }})</label><br>
     {% endfor %}
 
-    <label>Select absent WITH valid reason students:</label><br>
+    <label>Select absent WITH valid reason students</label><br>
     {% for student in student_name %}
         <input type="checkbox" id="stu_vr_{{ loop.index }}" name="vr_student" value="{{ student[0] }}">
         <label for="stu_vr_{{ loop.index }}">{{ student[0] }}({{ student[1] }})</label><br>
     {% endfor %}
-    <button type="submit">ADD</button>
-  </form>
-  <h2>Add Schedule</h2>
+    <br>
+    <button type="submit">&nbsp;Add&nbsp;</button>
+  </form><br>
+  </div>
+</div>
+<div class="schedule" id="schedule"><br>
+  <a href="#control" class="scroll-button">Back to Control Page</a><br><br>
+  <h2>Schedule</h2>
+  
+  <div class="a_sch">
+  <h3>Add Schedule</h3>
   <form method="POST">
     <input type="hidden" name="type" value="schedule">
-    <label for="term">Term:</label>
+    <label for="term">Term</label><br>
     <input type="text" name="term" id="term" required><br><br>
-    <label for="week">Week:</label>
+    <label for="week">Week</label><br>
     <input type="text" name="week" id="week" required><br><br>
-    <label for="date">Date:</label>
-    <input type="text" name="date" id="date" required><br><br>
-    <label for="day">Day:</label>
+    <label for="date">Date</label><br>
+    <input type="date" name="date" id="date" required><br><br>
+    <label for="day">Day</label><br>
     <input type="text" name="day" id="day" required><br><br>
-    <label for="session">Session:</label>
+    <label for="session">Session</label><br>
     <input type="text" name="session" id="session" required><br><br>
-    <label for="start">Start:</label>
+    <label for="start">Start</label><br>
     <input type="text" name="start" id="start" required><br><br>
-    <label for="end">End:</label>
+    <label for="end">End</label><br>
     <input type="text" name="end" id="end" required><br><br>
-    <label for="remark">Remark:</label>
+    <label for="remark">Remark</label><br>
     <input type="text" name="remark" id="remark" required><br><br>
-    <button type="submit">ADD</button>
+    <button type="submit">&nbsp;Add&nbsp;</button>
   </form>
-  <h2>Change password</h2>
-  <form method="POST">
-    <input type="hidden" name="type" value="password">
-    <label for="new_pw">New Password:</label>
-    <input type="text" name="new_pw" id="new_pw" required><br><br>
-    <button type="submit">CHANGE</button>
-  </form>
+  </div>
   
-  <a href="{{ url_for('logout') }}">Log out</a>
+  <div class="d_sch">
+  <h3>Delete Schedule</h3>
+  {% for schedule in schedules %}
+  <form method="POST">
+      <input type="hidden" name="type" value="delete_schedule">
+      <input type="checkbox" id="{{ loop.index }}" name="delete_schedule" value="{{ loop.index }}">
+      <label for="schedule_{{ loop.index }}">Date:{{ schedule[3] }}, Start:{{ schedule[6] }}, End:{{ schedule[7] }}</label><br>
+  <br>
+  {% endfor %}
+  <button type="submit">Delete</button><br>
+  </form><br>
+  </div>
+  
+</div>
 </body>
 </html>
