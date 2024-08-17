@@ -165,10 +165,18 @@ def admin_dashboard():
             return redirect(url_for('admin_dashboard', token=token))
         elif type == "attendance":
             original_date = request.form.get('ab_date', '').strip()
-            date = original_date.replace('-', '_')
-            date = f"'{date}'"
-            print(date)
-            addcolumn((f"ALTER TABLE attendance ADD COLUMN {date} TEXT;"))
+            ori_date = original_date.replace('-', '_')
+            date = f"'{ori_date}'"
+            con = sqlite3.connect('activity_hub.db')
+            cur = con.cursor()
+            cur.execute("PRAGMA table_info(attendance)")
+            columns = [row[1] for row in cur.fetchall()]
+            con.close()
+            
+            if ori_date not in columns:
+                addcolumn(f"ALTER TABLE attendance ADD COLUMN {date} TEXT;")
+            else:
+                print("yess")
             editdb(f"UPDATE attendance SET {date} = ?", ('1',))
             absent_students = request.form.getlist('absent_student')
             vr_students = request.form.getlist('vr_student')
