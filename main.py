@@ -175,8 +175,6 @@ def admin_dashboard():
             
             if ori_date not in columns:
                 addcolumn(f"ALTER TABLE attendance ADD COLUMN {date} TEXT;")
-            else:
-                print("yess")
             editdb(f"UPDATE attendance SET {date} = ?", ('1',))
             absent_students = request.form.getlist('absent_student')
             vr_students = request.form.getlist('vr_student')
