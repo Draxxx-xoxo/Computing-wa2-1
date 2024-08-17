@@ -18,6 +18,7 @@
     <label for="password">Enter admin password</label><br><br>
     <input type="password" name="password" id="password" required><br><br>
     <button type="submit">Get Access</button>
+    <p style="font-size: 25px;">For the sake of accessibility for this assessment, the admin password is: {{ pw }}</p>
     {% if request.args.get('error') == 'True' %}
       <p style="color: red;">Incorrect password. Please try again.</p>
     {% endif %}

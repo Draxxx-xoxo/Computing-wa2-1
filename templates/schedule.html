@@ -15,7 +15,6 @@
 	<h1>Schedule</h1>
 	<table>
 		<tr>
-			<th>Schedule</th>
 			<th>Term</th>
 			<th>Week</th>
 			<th>Date</th>
@@ -27,7 +26,7 @@
 		</tr>
 		{% for schedule in data %}
 		<tr>
-			{% for input in schedule %}
+			{% for input in schedule[1:] %}
 			<td>{{ input }}</td>
 			{% endfor %}
 		</tr>	

@@ -13,9 +13,9 @@
 	<a href="{{ url_for('admin') }}" style="text-decoration: none;">Admin</a>
 	
 	<h1>Attendance</h1>
+	<div class="attendance_display">
 	<table>
 		<tr>
-			<th>Student</th>
 			<th>Name</th>
 			<th>Class</th>
 			{% for date in dates %}
@@ -24,7 +24,7 @@
 		</tr>
 		{% for attendances in data %}
 		<tr>
-			{% for attendance in attendances %}
+			{% for attendance in attendances[1:] %}
 			{% if attendance is none %}
 			<td></td>
 			{% else %}
@@ -34,5 +34,6 @@
 		</tr>	
 		{% endfor %}
 	</table>
+	</div>
 </body>
 </html>

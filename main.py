@@ -52,9 +52,20 @@ def delete_rows_by_ids(table_name, column_name, ids):
         cur.execute(delete_query, (id,))
     con.commit()
     con.close()
-@app.route("/")
+@app.route("/", methods=["POST", "GET"])
 def home():
-    return render_template("index.html")
+    if request.method == "POST":
+        message = request.form.get('message')
+        with open("messages.txt", "a") as file:
+            file.write(message + "\n")
+        return redirect(url_for('home'))
+    else: 
+        messages = []
+        with open("messages.txt", "r") as file:
+            content = file.readlines()
+            for line in content:
+                messages.append(line.rstrip())
+        return render_template("index.html", messages=messages)
 
 @app.route("/announcements")
 def announce():
@@ -106,8 +117,10 @@ def admin():
         access = False
         if request.args.get('logout'):
             tokens.pop(token, None)
+    with open("for_access.txt", "r") as file:
+        pw = file.readline()
 
-    return render_template("admin.html", access=access)
+    return render_template("admin.html", access=access, pw=pw)
 
 @app.route("/logout")
 def logout():
@@ -156,13 +169,14 @@ def admin_dashboard():
             date = f"'{date}'"
             print(date)
             addcolumn((f"ALTER TABLE attendance ADD COLUMN {date} TEXT;"))
+            editdb(f"UPDATE attendance SET {date} = ?", ('1',))
             absent_students = request.form.getlist('absent_student')
             vr_students = request.form.getlist('vr_student')
-            editdb(f"UPDATE attendance SET {date} = ?", ('1',))
             for student in absent_students:
-                editdb(f"UPDATE attendance SET {date} = ? WHERE name = ?", ('0', student))
+                editdb(f"UPDATE attendance SET {date} = ? WHERE stu_id = ?", ('0', student))
+
             for student in vr_students:
-                editdb(f"UPDATE attendance SET {date} = ? WHERE name = ?", ('VR', student))
+                editdb(f"UPDATE attendance SET {date} = ? WHERE stu_id = ?", ('VR', student))
             return redirect(url_for('admin_dashboard', token=token))
         elif type == "schedule":
             term = request.form.get('term', '').strip()
@@ -181,9 +195,15 @@ def admin_dashboard():
             return redirect(url_for('admin_dashboard', token=token))
         elif type == "password":
             new_pw = request.form.get('new_pw')
+            with open("for_access.txt", "w") as file:
+                file.write(new_pw)
             set_password(new_pw)            
             return redirect(url_for('admin'))
-    student_name = opendb("SELECT name, class FROM attendance", None)
+        elif type == "clear_msg":
+            with open("messages.txt", "w") as file:
+                pass
+            return redirect(url_for('home'))
+    student_name = opendb("SELECT stu_id, name, class FROM attendance", None)
     announcements = opendb("SELECT announcement_id, announcement FROM announcements", None)
     schedules = opendb("SELECT * FROM schedule", None)
     return render_template("control.html", student_name=student_name, announcements=announcements, schedules=schedules)

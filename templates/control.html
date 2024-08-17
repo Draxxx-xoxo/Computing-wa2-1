@@ -17,11 +17,21 @@
   <div class="logout">
   <a href="{{ url_for('logout') }}" style="text-decoration: none;">Log out</a>
   </div>
-  <br><br>
   <a href="#announcement" class="scroll-button">Edit Announcements</a>
   <a href="#attendance" class="scroll-button">Edit Attendance</a>
   <a href="#schedule" class="scroll-button">Edit Schedule</a>
-
+  <br><br>
+  <form method="POST">
+    <input type="hidden" name="type" value="clear_msg">
+    <button type="submit" style="
+      padding: 20px 30px;
+      background-color: lightcoral;
+      color: rebeccapurple;
+      border-radius: 500px;
+      font-size: 25px;
+      margin-left: 90px;
+    ">Clear Message Board</button>
+  </form>
 <div class="change_pw">
   <h2>Change password</h2>
   <div class="c_pw">
@@ -87,8 +97,8 @@
   {% for student in student_name %}
   <form method="POST">
       <input type="hidden" name="type" value="delete_student">
-      <input type="checkbox" id="{{ loop.index }}" name="delete_student" value="{{ loop.index }}">
-      <label for="stu_{{ loop.index }}">{{ student[0] }}({{ student[1] }})</label><br>
+      <input type="checkbox" id="{{ loop.index }}" name="delete_student" value="{{ student[0] }}">
+      <label for="stu_{{ loop.index }}">{{ student[1] }}({{ student[2] }})</label><br>
   {% endfor %}
   <br>
   <button type="submit">Delete</button>
@@ -104,13 +114,13 @@
     <label>Select absent WITHOUT valid reason students</label><br>
     {% for student in student_name %}
         <input type="checkbox" id="stu_{{ loop.index }}" name="absent_student" value="{{ student[0] }}">
-        <label for="stu_{{ loop.index }}">{{ student[0] }}({{ student[1] }})</label><br>
+        <label for="stu_{{ loop.index }}">{{ student[1] }}({{ student[2] }})</label><br>
     {% endfor %}
-
+    <br>
     <label>Select absent WITH valid reason students</label><br>
     {% for student in student_name %}
         <input type="checkbox" id="stu_vr_{{ loop.index }}" name="vr_student" value="{{ student[0] }}">
-        <label for="stu_vr_{{ loop.index }}">{{ student[0] }}({{ student[1] }})</label><br>
+        <label for="stu_vr_{{ loop.index }}">{{ student[1] }}({{ student[2] }})</label><br>
     {% endfor %}
     <br>
     <button type="submit">&nbsp;Add&nbsp;</button>
@@ -150,7 +160,7 @@
   {% for schedule in schedules %}
   <form method="POST">
       <input type="hidden" name="type" value="delete_schedule">
-      <input type="checkbox" id="{{ loop.index }}" name="delete_schedule" value="{{ loop.index }}">
+      <input type="checkbox" id="{{ loop.index }}" name="delete_schedule" value="{{ schedule[0] }}">
       <label for="schedule_{{ loop.index }}">Date:{{ schedule[3] }}, Start:{{ schedule[6] }}, End:{{ schedule[7] }}</label><br>
   <br>
   {% endfor %}

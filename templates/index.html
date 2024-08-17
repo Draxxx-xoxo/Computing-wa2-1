@@ -13,44 +13,69 @@
 	<a href="{{ url_for('admin') }}" style="text-decoration: none;">Admin</a>
 	
 	<h1>Welcome to Activity Hub!</h1><br>
+		<div class="w_msg">
+		<form method="POST">
+			<label for="w_msg">Write messages to your CCA mates! &lt;3</label><br>
+			<textarea id="message" name="message" rows="4" cols="50" required></textarea><br>
+			<button type="submit">Send</button><br>
+		</form>
+		</div><br><hr><br>
+	<h2>* Message Board *</h2>
+	<div class="message_board">
+		{% if messages %}
+		{% for message in messages[::-1] %}
+		<p>{{ message }}</p>
+		{% endfor %}
+		{% else %}
+		<p>Message board is empty :(</p>
+		{% endif %}
+	</div><br><hr><br>
 	<div class="how_to">
 		<h3><br>1. Checking Announcements<br></h3>
 		<ul>
 				<li>Go to the Announcements section to find updates on homework, upcoming events, and important reminders.</li>
-				<li>If you’re an admin, you can add or edit these announcements in the Admin Dashboard.</li>
+				<li>Stay informed about new and exciting CCA opportunities.</li>
+				<li>Receive timely updates and ensure you never miss a crucial event or deadline.</li>
+				<li>Efficiently plan your participation in activities with clear communication.</li>
 		</ul>
 
 		<h3><br>2. Managing Attendance<br></h3>
 		<ul>
 				<li>Visit the Attendance section to see who’s been present or absent.</li>
-				<li>Admins can add new students and update attendance records from the Admin Dashboard.</li>
+				<li>Track attendance and participation in different co-curricular activities.</li>
+				<li>Identify trends in attendance to encourage greater involvement.</li>
+				<li>Maintain accurate records to help with planning and reporting.</li>
 		</ul>
 
 		<h3><br>3. Viewing the Schedule<br></h3>
 		<ul>
 				<li>The Schedule section shows the CCA timetable.</li>
-				<li>Admins can add or change schedule details using the Admin Dashboard.</li>
+				<li>Access the full schedule of events to plan your involvement effectively.</li>
+				<li>Avoid scheduling conflicts by viewing all planned activities in one place.</li>
+				<li>Stay organized and manage your time around CCA commitments.</li>
 		</ul>
 
 		<h3><br>4. Admin Features<br></h3>
 		<ul>
 				<li>Login: Click on Admin to log in with your admin password and access special features.</li>
-				<li>Add Announcements: Post new announcements about homework, events, or reminders.</li>
-				<li>Update Attendance: Add new students and mark attendance for different days.</li>
-				<li>Manage Schedule: Add or adjust CCA times and sessions.</li>
+				<li>Change Password: Change password for added security.</li>	
+				<li>Clear Message Board: Refresh the message board.</li>
+				<li>Add Announcements: Post/delete new announcements about homework, events, or reminders.</li>
+				<li>Update Attendance: Add/delelte new students and mark attendance for different days.</li>
+				<li>Manage Schedule: Add/delete CCA times and sessions.</li>
 		</ul>
 
 		<h3><br>5. Logging Out<br></h3>
 		<ul>
-				<li>To log out, click the Logout link in the admin section.</li>
+				<li>To log out, click Logout in the control page.</li>
 		</ul>
 
 		<h3><br>6. Helpful Tips<br></h3>
 		<ul>
 				<li>Keep your admin password safe and secure.</li>
-				<li>Regularly update announcements and attendance for accuracy.</li>
-				<li>Use the schedule to keep track of all your CCA timings.</li>
+				<li>Regularly update announcements, attendance and schedule for accuracy.</li>
+				<li>Use the schedule to keep track of all your CCA timings and announcements.</li>
 		</ul>
-	</div>
+	</div><br</br>
 </body>
 </html>
