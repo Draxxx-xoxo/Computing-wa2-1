@@ -34,11 +34,17 @@ View and Update Schedule: Access the current schedule with details on term, week
 
 Admin Dashboard:
 Secure Login: Admins can log in using a secure password to access control features.
+
 Manage Announcements: Add, edit, or delete announcements as needed.Their announcements are sorted into homeworks, reminders and events to their desire.
+
 Student Management: Add or remove students from the attendance list.
+
 Update Attendance Records: Add new dates to the attendance records and update student attendance statuses.
+
 Manage Schedule: Add or remove schedule entries.
+
 Change Password: Update the admin password to maintain security.
+
 Clear Messages: Option to clear all messages from the message board for a fresh start.
 
 Technical Aspects:
