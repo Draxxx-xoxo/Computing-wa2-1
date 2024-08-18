@@ -1,6 +1,7 @@
 ACTIVITY HUB
 
 - Inspiration
+  
 My inspiration for this project stemmed from my experiences with my CCA, Stageoworks. Over the months of involvement, I observed a significant challenge: information was dispersed across various platforms. For instance, reminders were communicated through WhatsApp, while schedules were maintained on Google Sheets, among other scattered locations. This fragmentation proved to be a considerable inconvenience, requiring members to navigate multiple sources to access necessary information and locate relevant links. Additionally, WhatsApp reminders were frequently overlooked or lost amidst a deluge of messages, leading to missed notifications and a general sense of disorganization.
 
 Recognizing these issues, I conceived the idea of developing a centralized web portal designed to consolidate all essential resources and communications for CCA members. By integrating announcements, schedules, and other crucial information into a single, accessible platform, the portal aims to streamline processes, enhance efficiency, and ensure that no critical updates are overlooked. This solution not only addresses the current inefficiencies but also enhances overall coordination within the CCA, ultimately fostering a more organized and productive environment.
@@ -14,6 +15,7 @@ Additionally, I was motivated by a desire to build a more connected and supporti
 In summary, I undertook this project to improve organization and communication within ASRJC and Stageworks, aiming to streamline information management, uplift CCA morale and enhance overall efficiency, to make a positive impact on the ASRJC community!
 
 - What it does
+
 Activity Hub is a comprehensive web application designed to enhance communication and streamline administrative tasks within CCAs, in this instance, Stageworks. Built with Flask, this application offers a user-friendly interface and a range of features to support effective management and engagement.
 
 Key Features:
@@ -45,6 +47,7 @@ Database Integration: Utilizes SQLite for efficient data storage and management,
 Dynamic Content: The app dynamically updates content based on user interactions, ensuring real-time reflection of changes and data.
 
 - How it's built
+  
 Framework and Libraries:
 
 Flask: The core web framework used to build the application, providing the infrastructure for handling web requests and rendering templates.
@@ -92,6 +95,7 @@ JSON Files: Used for storing hashed passwords and configuration settings.
 Text Files: Used for storing and retrieving messages on the message board.
 
 - Challenges encountered
+  
 Since I was pretty new to Flask and many of the technologies involved, I ran into several challenges while building the Activity Hub web app.
 
 Here’s a rundown of what I encountered and how I tackled each issue!
