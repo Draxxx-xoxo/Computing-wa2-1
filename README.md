@@ -47,6 +47,8 @@ Change Password: Update the admin password to maintain security.
 
 Clear Messages: Option to clear all messages from the message board for a fresh start.
 
+Logging out: Allows users to log out for security.
+
 Technical Aspects:
 Password Management: Passwords are securely hashed using bcrypt and stored in a JSON file, ensuring robust security for administrative access.
 Database Integration: Utilizes SQLite for efficient data storage and management, handling various aspects such as announcements, attendance, and schedules.
@@ -58,7 +60,8 @@ Framework and Libraries:
 
 Flask: The core web framework used to build the application, providing the infrastructure for handling web requests and rendering templates.
 bcrypt: A library used for secure password hashing, ensuring that sensitive credentials are protected.
-SQLite: Database Management
+
+SQLite: Database Management.
 
 Purpose: SQLite is employed as the lightweight, serverless database system for managing the application's data. It provides an efficient way to store, query, and manipulate data without the need for a separate database server.
 Schema and Tables:
@@ -109,30 +112,37 @@ Here’s a rundown of what I encountered and how I tackled each issue!
 Getting the Hang of Flask:
 
 Challenge: I had never worked with Flask before, so setting up routes, handling requests, and rendering templates was all new to me. It felt a bit like trying to read a foreign language at first.
+
 Solution: I practised for a long time and tried my upmost best to debug all my problems. The CS50 duck was rlly useful! There were many times where my webapp was not showing up properly. This was usually due to small  typo errors or wrong variable names. Even though these errors were minor, i had realised what a serious impact it could have on my webapp. I strived to be more careful and look clearly when i type.
 
 Working with SQLite:
 Challenge: I had no prior experience with databases or SQL, so creating tables, writing queries, and managing data was a bit confusing.
+
 Solution: I was completely lost with SQL at first. It seemed far fetched for me to actually successfully use the SQL datebase. I comtemplated just sticking to my comfort zone like txt and csv files. However, diving deeper into the benifits of using an SQL database, i had realised that more pain equates to more gain. I had watched Youtube tutorials and also asked my helpful friends who were more knowledgable in SQL. Using SQL really improved the effeciency of of my information accessing and storing, definately integrating the data more seemlessly into my webapp.
 
 Implementing Password Hashing with bcrypt:
 Challenge: Password hashing was a completely new concept for me, and I wasn’t sure how to securely handle user passwords.
+
 Solution: I checked out the bcrypt documentation and followed tutorials to learn how to hash and verify passwords. I practiced with basic examples to see how it all fit together.
 
 Setting Up Token-Based Authentication:
 Challenge:I wanted to make sure that only users that type in the correct password was allowed access to the site. However, I was unfamiliar with how token-based authentication worked, especially how to generate and manage tokens securely.
+
 Solution: I looked up resources on tokens and JSON Web Tokens and used Python’s uuid library to generate tokens. I tested how to validate and manage these tokens within Flask.
 
 Managing Dynamic Content:
 Challenge: Handling dynamic content like announcements and attendance records was tricky, especially with updating and querying the database.
+
 Solution: I learned how to handle form data and database interactions through Flask’s documentation. I created test cases to make sure that the data was being handled correctly. I also made sure that i had the correct format for my data, like using columns for my attendance dates and making sure column names were not similiar as it would cause it to crash.
 
 Making It Visually appealing and user-friendly:
-Challenge: With just basic HTML and CSS skills, making sure the app looked good and was easy to navigate was daunting
+Challenge: With just basic HTML and CSS skills, making sure the app looked good and was easy to navigate was daunting.
+
 Solution: I used responsive design techniques. I had experimented with different input types as well as the styling options for each of them. I also planned a colour scheme and tried my best to stick to it. By making the insturctions and navigation pop, i ensured that the user experience would be an memorable one, and also prevent any errors.
 
 Debugging and Testing:
 Challenge: Debugging the app and making sure everything worked correctly was tough, especially since I was still learning.
+
 Solution: I used Flask’s debugging tools and set the app to run in debug mode. Testing thoroughly and using browser developer tools helped me spot and fix issues.
 
 Some key issues were:
