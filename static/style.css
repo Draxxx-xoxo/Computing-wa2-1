@@ -1,3 +1,5 @@
+
+
 body{
 	font-family: Courier New;
 	background-color: lavenderblush;
@@ -18,14 +20,16 @@ h2{
 	border-radius: 50px;
 	background-color: thistle;
 	color: white;
-	margin: 0 340px;
+	display: inline-block;
+	text-align: center;
+	padding: 20px;
 }
 .announce h2{
+	display: inline-block;
 	border: none;
 	border-radius: 50px;
 	background-color: lavenderblush;
 	color: rebeccapurple;
-	margin: 0 500px;
 }
 
 .announce{
@@ -46,7 +50,7 @@ h2{
 .announcement, .attendance, .schedule, .change_pw{
 	border: 5px solid thistle;
 	border-radius: 300px;
-	margin: 50px 280px;
+	margin: 5% 6%;
 	padding: 20px 0px;
 }
 
@@ -167,15 +171,15 @@ a{
 .a_ann, .d_ann, .a_stu, .d_stu, .a_att, .a_sch, .d_sch, .c_pw{
 	border: 3px solid lavenderblush;
 	border-radius: 250px;
-	margin: 20px 100px;
 	padding: 20px 0px;
 	background-color: thistle;
+	margin: 2% 10%;
 }
 
 .w_msg{
 	border: 3px solid lavenderblush;
 	border-radius: 300px;
-	margin: 0px 300px;
+	margin: 2% 10%;
 	background-color: thistle;
 	font-size: 30px;
 	padding: 30px 0px;
@@ -199,18 +203,19 @@ a{
 		color: rebeccapurple;
 		border-radius: 500px;
 		font-size: 30px;
-		margin-left: 1500px;
 }
 
 .message_board {
-	width: 1500px;
-	height: 1200px;
-	overflow-y: auto;
-	padding: 10px;
-	margin: 0 auto;
-	border-radius: 100px;
-	border: 10px double thistle; 
-	background-color: white;
+		width: 80vw; /* Width is 80% of the viewport width */
+		max-width: 1500px; /* Maximum width to maintain the look on large screens */
+		height: 1200px; /* Height is 70% of the viewport height */
+		max-height: 1200px; /* Maximum height to maintain the look on large screens */
+		overflow-y: auto; /* Vertical scrolling if content overflows */
+		padding: 10px; /* Padding inside the element */
+		margin: 0 auto; /* Center horizontally */
+		border-radius: 100px; /* Rounded corners */
+		border: 10px double thistle; /* Border style and color */
+		background-color: white; /* Background color */
 }
 
 

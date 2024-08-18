@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<title>Activity Hub</title>
 	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">	
+	
 </head>
 <body>
 	<a href="{{ url_for('home') }}" style="text-decoration: none;">Home</a>
@@ -12,15 +13,28 @@
 	<a href="{{ url_for('schedule') }}" style="text-decoration: none;">Schedule</a>
 	<a href="{{ url_for('admin') }}" style="text-decoration: none;">Admin</a>
 	
-	<h1>Welcome to Activity Hub!</h1><hr>
+	<h1>Welcome to Activity Hub!</h1>
+	<p style="font-size: 25px;">
+			Scroll down for Message Board and Tutorial!
+	</p><hr>
 		<div class="w_msg">
 		<form method="POST">
 			<label for="w_msg">Write messages to your CCA mates! &lt;3</label><br>
 			<textarea id="message" name="message" rows="4" cols="50" required></textarea><br>
 			<button type="submit">Send</button><br>
 		</form>
-		</div><br><hr><br>
-	<h2>* Message Board *</h2>
+		</div><hr>
+	
+	<h2 style="
+			border: none;
+			border-radius: 50px;
+			background-color: thistle;
+			color: white;
+			display: inline-block;
+			text-align: center;
+			padding: 20px;
+			margin: 0px;
+	">* Message Board *</h2>
 	<div class="message_board">
 		{% if messages %}
 		{% for message in messages[::-1] %}
