@@ -19,8 +19,8 @@ In summary, I undertook this project to improve organization and communication w
 Activity Hub is a comprehensive web application designed to enhance communication and streamline administrative tasks within CCAs, in this instance, Stageworks. Built with Flask, this application offers a user-friendly interface and a range of features to support effective management and engagement.
 
 Key Features:
-Home Page:
 
+Home Page:
 Message Board: A space where members can post and view motivational and encouraging messages. This helps foster a positive community spirit and keeps everyone connected.
 
 Announcements:
